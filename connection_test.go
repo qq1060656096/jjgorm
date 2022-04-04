@@ -1,4 +1,4 @@
-package jjgorm
+package jjmgorm
 
 import (
 	"fmt"
@@ -26,7 +26,7 @@ func TestMysqlConnection(t *testing.T) {
 	assert.Equal(t, int64(1), db.RowsAffected, "TestMysqlConnection.insertData.error", db.Error)
 }
 
-func TestSqlite3Connection(t *testing.T)  {
+func TestSqlite3Connection(t *testing.T) {
 	dir, _ := os.Getwd()
 	dataSource := dir + "/testdata/sqlite3.1.db"
 	conf := Config{
@@ -55,11 +55,10 @@ func TestConnection_GetDB(t *testing.T) {
 	if err != nil {
 		assert.Error(t, err, "connection")
 	}
-	conn2,_ := connection.GetDB()
+	conn2, _ := connection.GetDB()
 	connection.Disconnect()
-	assert.NotEqual(t , nil, conn2)
+	assert.NotEqual(t, nil, conn2)
 }
-
 
 func TestConnection_Disconnect(t *testing.T) {
 	dir, _ := os.Getwd()

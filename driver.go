@@ -1,4 +1,4 @@
-package jjgorm
+package jjmgorm
 
 const (
 	DriverNameMySql      = "mysql"

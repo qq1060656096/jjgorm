@@ -1,4 +1,4 @@
-package jjgorm
+package jjmgorm
 
 import (
 	"fmt"
@@ -6,9 +6,6 @@ import (
 	"os"
 	"testing"
 )
-
-
-
 
 func sqlLite3Config(name string) Config {
 	dataSource := sqlLite3ConfigDataSource(name)
@@ -24,7 +21,6 @@ func sqlLite3ConfigDataSource(name string) string {
 	dataSource := dir + "/testdata/test-sqlite3-" + name + ".db"
 	return dataSource
 }
-
 
 func TestManager_Add(t *testing.T) {
 	m := NewManager()
@@ -72,7 +68,6 @@ func TestManager_Exist(t *testing.T) {
 	assert.True(t, m.Exist("managerExist2"))
 	assert.False(t, m.Exist("managerExist3"))
 }
-
 
 func TestManager_StringNilConnections(t *testing.T) {
 	m := &Manager{}

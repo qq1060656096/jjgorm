@@ -1,4 +1,4 @@
-package jjgorm
+package jjmgorm
 
 import (
 	"encoding/json"
@@ -12,7 +12,7 @@ type Manager struct {
 	rwMutex sync.RWMutex
 }
 
-func (m *Manager) Add(name string, conf Config)  {
+func (m *Manager) Add(name string, conf Config) {
 	m.rwMutex.Lock()
 	defer m.rwMutex.Unlock()
 	if m.noLockExist(name) {
@@ -21,17 +21,15 @@ func (m *Manager) Add(name string, conf Config)  {
 	m.conList[name] = NewConnection(conf)
 }
 
-func (m *Manager) Change(name string, conf Config)  {
+func (m *Manager) Change(name string, conf Config) {
 	m.rwMutex.Lock()
 	defer m.rwMutex.Unlock()
 	m.conList[name] = NewConnection(conf)
 }
 
-func (m *Manager) Remove(name string)  {
+func (m *Manager) Remove(name string) {
 	delete(m.conList, name)
 }
-
-
 
 func (m *Manager) Get(name string) *Connection {
 	defer m.rwMutex.RUnlock()
@@ -71,13 +69,13 @@ func (m *Manager) String() string {
 	if m.conList == nil {
 		return ""
 	}
-	if m.Len() < 1{
+	if m.Len() < 1 {
 		return ""
 	}
 	type tmpType struct {
 		Name  string
 		HasDb bool
-		Conf Config
+		Conf  Config
 	}
 	l := make([]tmpType, 0, len(m.conList))
 	for name, conn := range m.conList {
@@ -90,7 +88,7 @@ func (m *Manager) String() string {
 		}
 		l = append(l, tmp)
 	}
-	b, _:= json.Marshal(l)
+	b, _ := json.Marshal(l)
 	return string(b)
 }
 

@@ -1,4 +1,4 @@
-package jjgorm
+package jjmgorm
 
 type Config struct {
 	DriverName string

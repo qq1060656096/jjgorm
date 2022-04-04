@@ -1,4 +1,4 @@
-package jjgorm
+package jjmgorm
 
 import (
 	"github.com/stretchr/testify/assert"

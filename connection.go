@@ -1,17 +1,17 @@
-package jjgorm
+package jjmgorm
 
 import (
-	"gorm.io/gorm"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/driver/sqlserver"
+	"gorm.io/gorm"
 	"sync"
 )
 
 type Connection struct {
-	db   *gorm.DB
-	conf Config
+	db    *gorm.DB
+	conf  Config
 	mutex sync.Mutex
 }
 

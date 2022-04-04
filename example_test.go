@@ -1,11 +1,11 @@
-package jjgorm
+package jjmgorm
 
 import (
 	"fmt"
 	"gorm.io/gorm"
+	"gorm.io/plugin/dbresolver"
 	"os"
 	"time"
-	"gorm.io/plugin/dbresolver"
 )
 
 func ExampleConnection_GetDB() {
@@ -82,7 +82,7 @@ func ExampleNewManagerGormReadWriteSplitting() {
 	db.Use(dbresolver.Register(dbresolver.Config{
 		// use `db4` as replicas
 		Replicas: []gorm.Dialector{NewDialector(conf2)},
-		Policy: dbresolver.RandomPolicy{},
+		Policy:   dbresolver.RandomPolicy{},
 	}).Register(dbresolver.Config{
 		// `db3` as replicas for `orders`
 		Replicas: []gorm.Dialector{NewDialector(conf3)},
